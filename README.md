@@ -24,6 +24,7 @@ The goal of this project is to build a backend system for a healthcare applicati
 ---
 
 ## Project Structure
+```sh
 health_backend/
 │── health_api/
 │   │── migrations/
@@ -47,7 +48,7 @@ health_backend/
 │── requirements.txt
 │── readme.md
 │── healthEnv/
-
+```
 ## API Endpoints
 
 ### 1. Authentication APIs
@@ -90,19 +91,27 @@ cd healthcare_backE
 ```
 
 ## Set Up Virtual Environment
+```sh
 python -m venv healthEnv
 source healthEnv/bin/activate  # On MacOS/Linux
 healthEnv\Scripts\activate    # On Windows
+```
 
 ## Install dependencies 
-###pip install -r requirements.txt
+```sh
+pip install -r requirements.txt
+```
 
 ## Apply migrations 
+```sh
 python manage.py migrate
 python manage.py createsuperuser  # Create an admin user (Follow prompts)
+```
 
 ## start a server 
+```sh
 python manage.py runserver
+```
 
 # Server Information
 
