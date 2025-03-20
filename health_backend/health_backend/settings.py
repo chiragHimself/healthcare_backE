@@ -118,6 +118,19 @@ AUTH_USER_MODEL = 'health_api.User'  # Replace 'your_app_name' with your actual 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=12),  # Increase access token expiry time
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),   # Increase refresh token expiry time
+    'ROTATE_REFRESH_TOKENS': True,  # Rotate refresh tokens on use
+    'BLACKLIST_AFTER_ROTATION': True,  # Blacklist old refresh tokens after rotation
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
+
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"

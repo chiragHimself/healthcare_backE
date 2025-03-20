@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
-from .models import Patient
+from .models import Patient,Doctor , PatientDoctorMapping
 
 User = get_user_model()
 
@@ -34,8 +34,25 @@ class UserSerializer(serializers.ModelSerializer):
         validated_data["password"] = make_password(validated_data["password"])
         return super().create(validated_data)
 
+''' serializer for patient api'''
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
         fields = ['id', 'user', 'name', 'age', 'gender', 'contact', 'address']  # Explicit fields
         extra_kwargs = {'user': {'read_only': True}}  
+
+
+''' serializer for doctor api'''
+class DoctorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Doctor
+        fields = ['id', 'user', 'name', 'specialization', 'experience', 'contact', 'address']
+        extra_kwargs = {'user': {'read_only': True}}
+
+        
+''' Serializer for patient-doctor mapping API '''
+class PatientDoctorMappingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PatientDoctorMapping
+        fields = ['id', 'patient', 'doctor', 'assigned_at']
+        extra_kwargs = {'assigned_at': {'read_only': True}}
