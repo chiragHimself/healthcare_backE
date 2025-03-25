@@ -1,5 +1,5 @@
 # Healthcare Backend
-## created by : chirag (for WhatBytes assignment round - 20/3/25)
+
 
 ## Objective
 
